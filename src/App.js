@@ -26,6 +26,14 @@ class App extends Component {
       });
   };
 
+  // componentDidUpdate() {
+  //   axios.get("https://jsonplaceholder.typicode.com/todos").then((result) => {
+  //     this.setState({
+  //       list: result.data,
+  //     });
+  //   });
+  // }
+
   handleChange = (event) => {
     this.setState({
       item: event.target.value,
@@ -44,6 +52,17 @@ class App extends Component {
       list: [...this.state.list, newItem],
       item: "",
     });
+    // axios
+    //   .post("https://jsonplaceholder.typicode.com/todos", newItem)
+    //   .then((result) => {
+    //     console.log(result);
+    //     this.setState({
+    //       item: "",
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   render() {
@@ -71,7 +90,7 @@ class App extends Component {
           </thead>
           <tbody>
             {list.map((item) => (
-              <tr>
+              <tr key={item.id}>
                 <td className="index">{item.id}</td>
                 <td>{item.title}</td>
               </tr>
